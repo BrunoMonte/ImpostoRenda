@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iMPOSTO DE RENDA</title>
+</head>
+ <style>
+     body{
+         background: darkslategrey;
+         color: black;
+         font : normal 18pt Arial
+     }
+ </style>
+<body>
+<h1>IMPOSTO DE RENDA</h1>
+<p><strong>SALÁRIO R$</strong> <input type="number" name="txtnumero1" id="txtnumero1"></p> 
+<input type="button" value="VERIFICAR" onclick= calcular()>
+<div id = 'resultado'>
+
+</div>
+<script>
+function calcular(){
+        var imposto= 0
+        var sal_liquido= 0
+        var salbruto = 0
+        var txtsalbruto= window.document.getElementById('txtnumero1')
+        var resultado= window.document.getElementById('resultado')
+        salbruto = Number(txtsalbruto.value)
+         
+            if(salbruto <= 1903.98){
+                imposto = 0 
+                sal_liquido = salbruto
+            }else if(salbruto <= 2826.65){
+                imposto = salbruto * 7.5 / 100 - 142.80 
+                sal_liquido = salbruto - imposto
+            }else if (salbruto <=3751.05){
+                imposto = salbruto * 15 / 100 - 354.80
+                sal_liquido = salbruto - imposto 
+            }else if (salbruto <= 4664.68){
+                imposto = salbruto * 22.5 / 100 - 636.13
+                sal_liquido = salbruto - imposto
+            }else if(salbruto > 4664.68){
+                imposto = salbruto * 27.5 / 100 - 869.36
+                sal_liquido = salbruto - imposto
+            }
+            resultado.innerHTML= '<p>O seu imposto é <strong>R$'+imposto+'</strong><p> <p>E o seu salario liquido é <strong>R$'+sal_liquido+'<strong><p> '    
+
+    }
+</script>
+</body>
+</html>
